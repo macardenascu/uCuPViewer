@@ -47,7 +47,7 @@ El recorrido anterior sí tiene respaldo de pruebas físicas. Nginx, el servicio
 | Tasas SPI teóricas y experimentales | Bitrate **efectivo** medido en pruebas; máximo teórico de ambos extremos pendiente |
 | Captura ≥40 kSa/s | **No demostrado** |
 
-La [matriz completa](docs/portfolio/requirements.md) incluye criterios, método de comprobación y evidencia por requisito. Nada de convertir un preset seleccionado en una medición de frecuencia, porque el ADC no funciona a base de optimismo.
+La [matriz completa](docs/portfolio/requirements.md) incluye criterios, método de comprobación y evidencia por requisito. La matriz distingue una frecuencia configurada de una frecuencia realmente medida.
 
 ## Resultados visibles
 
