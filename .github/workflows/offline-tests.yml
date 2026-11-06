@@ -1,0 +1,37 @@
+name: Offline checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Python sources (syntax only)
+        run: |
+          python -m py_compile backend/milkv_uart/milkv_stream.py backend/milkv_uart/pc_dashboard_uart.py infrastructure/spi_protocol.py
+      - name: Run hardware-free tests
+        run: |
+          python -B -m unittest discover -s tests/milkv_uart -p 'test_*.py' -v
+      - name: Check documentation and assets exist
+        run: |
+          test -s README.md
+          test -s docs/portfolio/architecture.md
+          test -s docs/portfolio/requirements.md
+          test -s docs/portfolio/evidence.md
+          test -s docs/assets/hardware-overview.jpeg
+          test -s docs/assets/hardware-channels.jpeg
+          test -s docs/assets/simulation.jpeg
