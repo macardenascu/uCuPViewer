@@ -41,3 +41,7 @@ __pycache__/
 # logs/artifacts volátiles
 *.log
 *.tmp
+# Entornos de desarrollo locales
+.venv/
+venv/
+.envrc
